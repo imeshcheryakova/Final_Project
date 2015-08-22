@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @users_input.errors.any? %>
+  <% @users_input.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Users Input</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_users_input" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for exercise_time -->
+      <div class="form-group">
+        <label for="exercise_time" class="control-label">
+          Exercise time
+        </label>
+
+        <input type="text" id="exercise_time" name="exercise_time" placeholder="Exercise time" class="form-control" value="<%= @users_input.exercise_time %>">
+      </div>
+
+      <!-- Label and input for exercise_type -->
+      <div class="form-group">
+        <label for="exercise_type" class="control-label">
+          Exercise type
+        </label>
+
+        <input type="text" id="exercise_type" name="exercise_type" placeholder="Exercise type" class="form-control" value="<%= @users_input.exercise_type %>">
+      </div>
+
+      <!-- Label and input for exercise_id -->
+      <div class="form-group">
+        <label for="exercise_id" class="control-label">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id" name="exercise_id" placeholder="Exercise" class="form-control" value="<%= @users_input.exercise_id %>">
+      </div>
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @users_input.meal_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @users_input.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Users Input
+      </button>
+      or
+      <a href="/users_inputs">Cancel</a>
+    </form>
+  </div>
+</div>

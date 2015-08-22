@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Recommendation #<%= @recommendation.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Recommendation meal portions</dt>
+      <dd><%= @recommendation.recommendation_meal_portions %></dd>
+
+      <dt>Recommendation time exercise</dt>
+      <dd><%= @recommendation.recommendation_time_exercise %></dd>
+
+      <dt>Exercise</dt>
+      <dd><%= @recommendation.exercise_id %></dd>
+
+      <dt>Meal</dt>
+      <dd><%= @recommendation.meal_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @recommendation.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/recommendations" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/recommendations/<%= @recommendation.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_recommendation/<%= @recommendation.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

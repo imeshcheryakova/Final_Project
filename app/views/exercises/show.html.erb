@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h3>Exercise #<%= @exercise.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Weather</dt>
+      <dd><%= @exercise.weather %></dd>
+
+      <dt>Calories per hour</dt>
+      <dd><%= @exercise.calories_per_hour %></dd>
+
+      <dt>Type</dt>
+      <dd><%= @exercise.type %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/exercises" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/exercises/<%= @exercise.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_exercise/<%= @exercise.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>

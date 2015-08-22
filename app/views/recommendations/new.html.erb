@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @recommendation.errors.any? %>
+  <% @recommendation.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Add Recommendation</h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/create_recommendation" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for recommendation_meal_portions -->
+      <div class="form-group">
+        <label for="recommendation_meal_portions" class="control-label">
+          Recommendation meal portions
+        </label>
+
+        <input type="text" id="recommendation_meal_portions" name="recommendation_meal_portions" placeholder="Recommendation meal portions" class="form-control" value="<%= @recommendation.recommendation_meal_portions %>">
+      </div>
+
+      <!-- Label and input for recommendation_time_exercise -->
+      <div class="form-group">
+        <label for="recommendation_time_exercise" class="control-label">
+          Recommendation time exercise
+        </label>
+
+        <input type="text" id="recommendation_time_exercise" name="recommendation_time_exercise" placeholder="Recommendation time exercise" class="form-control" value="<%= @recommendation.recommendation_time_exercise %>">
+      </div>
+
+      <!-- Label and input for exercise_id -->
+      <div class="form-group">
+        <label for="exercise_id" class="control-label">
+          Exercise
+        </label>
+
+        <input type="text" id="exercise_id" name="exercise_id" placeholder="Exercise" class="form-control" value="<%= @recommendation.exercise_id %>">
+      </div>
+
+      <!-- Label and input for meal_id -->
+      <div class="form-group">
+        <label for="meal_id" class="control-label">
+          Meal
+        </label>
+
+        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @recommendation.meal_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @recommendation.user_id %>">
+      </div>
+
+      <button class="btn btn-success">
+        Create Recommendation
+      </button>
+      or
+      <a href="/recommendations">Cancel</a>
+    </form>
+  </div>
+</div>

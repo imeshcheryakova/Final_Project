@@ -1,7 +1,107 @@
 Rails.application.routes.draw do
 
 
-  get "/", :controller => "index", :action => "home"
+  # Routes for the Users_input resource:
+  # CREATE
+  get "/users_inputs/new", :controller => "users_inputs", :action => "new"
+  post "/create_users_input", :controller => "users_inputs", :action => "create"
+
+  # READ
+  get "/users_inputs", :controller => "users_inputs", :action => "index"
+  get "/users_inputs/:id", :controller => "users_inputs", :action => "show"
+
+  # UPDATE
+  get "/users_inputs/:id/edit", :controller => "users_inputs", :action => "edit"
+  post "/update_users_input/:id", :controller => "users_inputs", :action => "update"
+
+  # DELETE
+  get "/delete_users_input/:id", :controller => "users_inputs", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Recommendation resource:
+  # CREATE
+  get "/recommendations/new", :controller => "recommendations", :action => "new"
+  post "/create_recommendation", :controller => "recommendations", :action => "create"
+
+  # READ
+  get "/recommendations", :controller => "recommendations", :action => "index"
+  get "/recommendations/:id", :controller => "recommendations", :action => "show"
+
+  # UPDATE
+  get "/recommendations/:id/edit", :controller => "recommendations", :action => "edit"
+  post "/update_recommendation/:id", :controller => "recommendations", :action => "update"
+
+  # DELETE
+  get "/delete_recommendation/:id", :controller => "recommendations", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Exercise resource:
+  # CREATE
+  get "/exercises/new", :controller => "exercises", :action => "new"
+  post "/create_exercise", :controller => "exercises", :action => "create"
+
+  # READ
+  get "/exercises", :controller => "exercises", :action => "index"
+  get "/exercises/:id", :controller => "exercises", :action => "show"
+
+  # UPDATE
+  get "/exercises/:id/edit", :controller => "exercises", :action => "edit"
+  post "/update_exercise/:id", :controller => "exercises", :action => "update"
+
+  # DELETE
+  get "/delete_exercise/:id", :controller => "exercises", :action => "destroy"
+  #------------------------------
+
+  # Routes for the Meal resource:
+  # CREATE
+  get "/meals/new", :controller => "meals", :action => "new"
+  post "/create_meal", :controller => "meals", :action => "create"
+
+  # READ
+  get "/meals", :controller => "meals", :action => "index"
+  get "/meals/:id", :controller => "meals", :action => "show"
+
+  # UPDATE
+  get "/meals/:id/edit", :controller => "meals", :action => "edit"
+  post "/update_meal/:id", :controller => "meals", :action => "update"
+
+  # DELETE
+  get "/delete_meal/:id", :controller => "meals", :action => "destroy"
+  #------------------------------
+
+  devise_for :users
+  #get "/", :controller => "index", :action => "home"
+
+  root 'index#home'
+
+  #Routes for USERS
+  # CREATE
+  get "/user/new", :controller => "user", :action => "new"
+  post "/create_user", :controller => "user", :action => "create"
+
+  # READ
+  get "/user", :controller => "user", :action => "index"
+  get "/user/:id", :controller => "user", :action => "show"
+
+  # UPDATE
+  get "/user/:id/edit", :controller => "user", :action => "edit"
+  post "/update_user/:id", :controller => "user", :action => "update"
+
+  # DELETE
+  get "/delete_user/:id", :controller => "user", :action => "destroy"
+
+  #Routes for INPUT
+
+  # CREATE
+  get "/input/new", :controller => "input", :action => "new"
+  post "/create_input", :controller => "input", :action => "create"
+
+  #Routes for RECOMMENDATIONS
+
+  # READ
+  get "/recommendation", :controller => "recommendation", :action => "index"
+  get "/recommendation/:id", :controller => "recommendation", :action => "show"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

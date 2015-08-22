@@ -1,0 +1,37 @@
+<div class="page-header">
+  <h3>Users Input #<%= @users_input.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Exercise time</dt>
+      <dd><%= @users_input.exercise_time %></dd>
+
+      <dt>Exercise type</dt>
+      <dd><%= @users_input.exercise_type %></dd>
+
+      <dt>Exercise</dt>
+      <dd><%= @users_input.exercise_id %></dd>
+
+      <dt>Meal</dt>
+      <dd><%= @users_input.meal_id %></dd>
+
+      <dt>User</dt>
+      <dd><%= @users_input.user_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/users_inputs" class="btn btn-primary">
+        Back
+      </a>
+      <a href="/users_inputs/<%= @users_input.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>
+      <a href="/delete_users_input/<%= @users_input.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+    </div>
+  </div>
+</div>
