@@ -11,19 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822155521) do
+ActiveRecord::Schema.define(version: 20150822215051) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "weather"
     t.integer  "calories_per_hour"
-    t.string   "type"
+    t.string   "exercise"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "meals", force: :cascade do |t|
     t.integer  "calories_per_portion"
-    t.string   "type"
+    t.string   "meal"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150822155521) do
     t.string   "password"
     t.string   "username"
     t.integer  "alcohol"
-    t.string   "bodytype"
+    t.string   "body"
     t.float    "height"
     t.float    "weight"
     t.string   "last_name"
@@ -72,13 +72,12 @@ ActiveRecord::Schema.define(version: 20150822155521) do
 
   create_table "users_inputs", force: :cascade do |t|
     t.integer  "exercise_time"
-    t.string   "exercise_type"
     t.integer  "exercise_id"
     t.integer  "meal_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "meal_type"
+    t.text     "meal"
   end
 
 end

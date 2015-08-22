@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
 
-  #get "/", :controller => "index", :action => "show"
-  #devise_for :users
-  root 'index#show'
 
+  #get "/", :controller => "index", :action => "show"
+
+
+  root to: 'index#show'
+
+  devise_for :users
 
   # Routes for the Users_input resource:
   # CREATE
@@ -73,9 +76,6 @@ Rails.application.routes.draw do
   # DELETE
   get "/delete_meal/:id", :controller => "meals", :action => "destroy"
   #------------------------------
-
-
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -24,34 +24,28 @@
           Exercise time
         </label>
 
-        <input type="text" id="exercise_time" name="exercise_time" placeholder="Exercise time" class="form-control" value="<%= @users_input.exercise_time %>">
+        <input type="text" id="exercise_time" name="exercise_time" placeholder="Exercise time in minutes" class="form-control" value="<%= @users_input.exercise_time %>">
+
       </div>
 
-      <!-- Label and input for exercise_type -->
-      <div class="form-group">
-        <label for="exercise_type" class="control-label">
-          Exercise type
-        </label>
-
-        <input type="text" id="exercise_type" name="exercise_type" placeholder="Exercise type" class="form-control" value="<%= @users_input.exercise_type %>">
-      </div>
-
-      <!-- Label and input for exercise_id -->
       <div class="form-group">
         <label for="exercise_id" class="control-label">
           Exercise
         </label>
 
-        <input type="text" id="exercise_id" name="exercise_id" placeholder="Exercise" class="form-control" value="<%= @users_input.exercise_id %>">
+        <!-- <input type="text" id="exercise_id" name="exercise_id" placeholder="Exercise" class="form-control" value="<%= @users_input.exercise_id %>"> -->
+        <%= select_tag :exercise_id, options_from_collection_for_select(Exercise.order("exercise ASC"), :id, :exercise, @users_input.exercise_id), :class => "form-control" %>
       </div>
 
       <!-- Label and input for meal_id -->
       <div class="form-group">
+
         <label for="meal_id" class="control-label">
           Meal
         </label>
 
-        <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @users_input.meal_id %>">
+        <!-- <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @users_input.meal_id %>"> -->
+        <%= select_tag :meal_id, options_from_collection_for_select(Meal.order("meal ASC"), :id, :meal, @users_input.meal_id), :class => "form-control" %>
       </div>
 
       <!-- Label and input for user_id -->
@@ -64,7 +58,7 @@
       </div>
 
       <button class="btn btn-success">
-        Create Users Input
+        Get Recommendation
       </button>
       or
       <a href="/users_inputs">Cancel</a>

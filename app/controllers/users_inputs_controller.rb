@@ -14,7 +14,6 @@ class UsersInputsController < ApplicationController
   def create
     @users_input = UsersInput.new
     @users_input.exercise_time = params[:exercise_time]
-    @users_input.exercise_type = params[:exercise_type]
     @users_input.exercise_id = params[:exercise_id]
     @users_input.meal_id = params[:meal_id]
     @users_input.user_id = params[:user_id]
@@ -34,7 +33,6 @@ class UsersInputsController < ApplicationController
     @users_input = UsersInput.find(params[:id])
 
     @users_input.exercise_time = params[:exercise_time]
-    @users_input.exercise_type = params[:exercise_type]
     @users_input.exercise_id = params[:exercise_id]
     @users_input.meal_id = params[:meal_id]
     @users_input.user_id = params[:user_id]

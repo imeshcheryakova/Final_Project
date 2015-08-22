@@ -17,7 +17,7 @@
       <% @meals.each do |meal| %>
       <tr>
         <td><%= meal.calories_per_portion %></td>
-        <td><%= meal.type %></td>
+        <td><%= meal.meal %></td>
         <td>
           <a href="/meals/<%= meal.id %>" class="btn btn-primary">Show</a>
           <a href="/meals/<%= meal.id %>/edit" class="btn btn-warning">Edit</a>
