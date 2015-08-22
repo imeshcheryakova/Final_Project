@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  #devise_for :users
-  #get "/", :controller => "index", :action => "show"
 
+  #get "/", :controller => "index", :action => "show"
+  #devise_for :users
   root 'index#show'
 
 
