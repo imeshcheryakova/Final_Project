@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  #devise_for :users
+  #get "/", :controller => "index", :action => "show"
+
+  root 'index#show'
+
 
   # Routes for the Users_input resource:
   # CREATE
@@ -69,38 +74,7 @@ Rails.application.routes.draw do
   get "/delete_meal/:id", :controller => "meals", :action => "destroy"
   #------------------------------
 
-  devise_for :users
-  #get "/", :controller => "index", :action => "home"
 
-  root 'index#home'
-
-  #Routes for USERS
-  # CREATE
-  get "/user/new", :controller => "user", :action => "new"
-  post "/create_user", :controller => "user", :action => "create"
-
-  # READ
-  get "/user", :controller => "user", :action => "index"
-  get "/user/:id", :controller => "user", :action => "show"
-
-  # UPDATE
-  get "/user/:id/edit", :controller => "user", :action => "edit"
-  post "/update_user/:id", :controller => "user", :action => "update"
-
-  # DELETE
-  get "/delete_user/:id", :controller => "user", :action => "destroy"
-
-  #Routes for INPUT
-
-  # CREATE
-  get "/input/new", :controller => "input", :action => "new"
-  post "/create_input", :controller => "input", :action => "create"
-
-  #Routes for RECOMMENDATIONS
-
-  # READ
-  get "/recommendation", :controller => "recommendation", :action => "index"
-  get "/recommendation/:id", :controller => "recommendation", :action => "show"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
