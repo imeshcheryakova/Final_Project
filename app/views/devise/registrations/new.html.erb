@@ -65,28 +65,53 @@
 
     <div class="form-group">
       <%= f.label :alcohol %>
-      <%= f.text_field :alcohol, :class => "form-control" %>
+      <%= select_tag :alcohol, options_for_select([["once per week",1],["twice per week",2],["three times per week",3],["four times per week",4],["five times per week",5],["six times per week",6],["every day",7]],7), :class => "form-control" %>
+
+
+    </div>
+
+
+
+    <div class="form-group">
+      <%= f.label :height %>
+      <%= f.number_field :height, :class => "form-control", :placeholder => "Inches" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :weight %>
+      <%= f.number_field :weight, :class => "form-control", :placeholder => "Pounds"%>
+
     </div>
 
     <div class="form-group">
 
       <%= f.label :body %>
-      <%= f.text_field :body, :class => "form-control" %>
+
 
     </div>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+      <div class="btn-group" role="group" >
+        <%=image_tag("Ectomorth.jpg", alt: "Example Image")%>
+        <button type="button" class="btn btn-default">My body type is ectomorth</button>
+        <input type="checkbox" id="user_body">
 
-    
-
-
-    <div class="form-group">
-      <%= f.label :height %>
-      <%= f.number_field :height, :class => "form-control" %>
+      </div>
+      <div class="btn-group" role="group">
+        <%=image_tag("Mesomorth.jpg", alt: "Example Image")%>
+        <button type="button" class="btn btn-default">My body type is mesomorth</button>
+        <input type="checkbox" id="user_body">
+      </div>
+      <div class="btn-group" role="group">
+        <%=image_tag("Endomorth.jpg", alt: "Example Image")%>
+        <button type="button" class="btn btn-default">My body type is endomorth</button>
+        <input type="checkbox" id="user_body">
+      </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label :weight %>
-      <%= f.number_field :weight, :class => "form-control" %>
-    </div>
+
+
+    <br />
+
 
     <div class="actions">
       <%= f.submit "Sign up", :class => "btn btn-success btn-block" %>

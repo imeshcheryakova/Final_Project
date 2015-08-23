@@ -19,7 +19,7 @@ class UsersInputsController < ApplicationController
     @users_input.user_id = params[:user_id]
 
     if @users_input.save
-      redirect_to "/users_inputs", :notice => "Users input created successfully."
+      redirect_to "/recommendations/new"
     else
       render 'new'
     end

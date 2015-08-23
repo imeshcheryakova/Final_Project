@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+=begin
   validates :email, :presence => true
   validates :zip, :presence => true, numericality: { only_integer: true }
   validates :state, :presence => true
@@ -18,6 +19,7 @@ class User < ActiveRecord::Base
   validates :weight, :presence => true, numericality: { only_integer: true }
   validates :first_name, :presence => true
   validates :last_name, :presence => true
+=end
 
 
   has_many :recommendations
