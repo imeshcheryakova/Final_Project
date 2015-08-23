@@ -79,6 +79,18 @@
                         </div>
 
                         <div class="form-group">
+                          <%= f.label :height, class: "col-sm-2 control-label" %>
+                          <div class="col-sm-10">
+                            <%= f.number_field :height, autocomplete: "off", class: "form-control" %>
+                          </div>
+
+                          <div class="form-group">
+                            <%= f.label :weight, class: "col-sm-2 control-label" %>
+                            <div class="col-sm-10">
+                              <%= f.number_field :weight, autocomplete: "off", class: "form-control" %>
+                            </div>
+
+                        <div class="form-group">
                           <%= f.label :photo, class: "col-sm-2 control-label" %>
                           <div class="col-sm-10">
                             <%= f.text_field :photo, autocomplete: "off", class: "form-control" %>
