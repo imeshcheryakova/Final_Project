@@ -49,6 +49,31 @@ class RecommendationsController < ApplicationController
     #Calories to Burn
     @CaloriestoBurn=@UserInputCalculated-@TargetCalories
 
+    #if Input>Target => Excess Calories. Excess Calories + Target Calories*0.3 is the target number to burn via Exercise.
+    #TargetCalories*0.3 is the final value for new meal.
+
+    #if Input<Target => Lack of Calories. Lack Calories + Target Calories*0.3 is the final number for new meal.
+    # TargetCalories*0.3 is the final value for exercise.
+
+    #Calculating Final Calories Value for Recommendation
+
+    if @CaloriestoBurn>0
+      @CaloriestoExercise=@CaloriestoBurn+@TargetCalories*0.3
+      @CaloriestoEat=@TargetCalories*0.3
+    end
+
+    if @CaloriestoBurn<0
+      @CaloriestoExercise=@TargetCalories*0.3
+      @CaloriestoEat=@CaloriestoBurn+@TargetCalories*0.3
+    end
+
+    if @CaloriestoBurn=0
+      @CaloriestoExercise=@TargetCalories*0.3
+      @CaloriestoEat=@TargetCalories*0.3
+    end
+
+    #Retrieveing Meals and Exercises for Recommendation
+
 
 =begin
     @recommendation.recommendation_meal_portions = params[:recommendation_meal_portions]
