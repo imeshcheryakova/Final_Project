@@ -14,16 +14,41 @@ class RecommendationsController < ApplicationController
   def create
     @recommendation = Recommendation.new
 
-    #Retrieve last data row from DB
+    #Calculate Daily Calories Intake
 
-    #Run calculation
-    #1.Calculate difference between user's food and exercise
-    #2.Determine coefficients based on body type and alcohol consumption
-    #3.Adjust calories from step 1
-    #4.Adjust by daily calories intake
-    #5.Check whether 4. negative or positive
-    #6.Suggest Preselected exercise to burn 70%
-    #7.Suggest list of meals with calories less or equeal 30% of step 4
+    @DailyIntake = @current_user.weight*11*@current_user.activity_factor+100*@current_user.alcohol
+
+    #Calculate Target Weight Loss/Gain
+
+    @TargetLossGain = @current_user.target_pounds*3500/@current_user.target_days
+
+    #Calculate Daily Target Calories
+
+    @TargetCalories = @DailyIntake + @TargetLossGain
+
+    if @current_user.body="Ectomorth"
+      @TargetCalories=@TargetCalories*0.8
+    end
+
+    if @current_user.body="Mesomorth"
+      @TargetCalories=@TargetCalories*1.0
+    end
+
+    if @current_user.body="Endomorth"
+      @TargetCalories=@TargetCalories*1.2
+    end
+
+    #Calculate user input
+    @MaxId= Users_input.where(user_id: @current_user.id).maximum(:created_at).id
+    @UserInput = Users_input.find(@MaxId)
+    @UserInput.exercise.calories_per_hour
+    @UserInput.exercise_time
+
+    @UserInputCalculated=@UserInput.exercise.calories_per_hour* @UserInput.exercise_time/60
+
+    #Calories to Burn
+    @CaloriestoBurn=@UserInputCalculated-@TargetCalories
+
 
 =begin
     @recommendation.recommendation_meal_portions = params[:recommendation_meal_portions]
@@ -32,6 +57,8 @@ class RecommendationsController < ApplicationController
     @recommendation.meal_id = params[:meal_id]
     @recommendation.user_id = params[:user_id]
 =end
+
+
 
     if @recommendation.save
       redirect_to "/recommendations", :notice => "Recommendation created successfully."

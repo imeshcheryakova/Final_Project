@@ -1,4 +1,8 @@
+
+require 'csv'
 class ExercisesController < ApplicationController
+
+
   def index
     @exercises = Exercise.all
   end
@@ -22,6 +26,7 @@ class ExercisesController < ApplicationController
     else
       render 'new'
     end
+
   end
 
   def edit
@@ -48,5 +53,16 @@ class ExercisesController < ApplicationController
     @exercise.destroy
 
     redirect_to "/exercises", :notice => "Exercise deleted."
+  end
+
+def readexercises
+  Exercise.delete_all
+  csv_text = File.read('/Users/irina_m/Desktop/exercises.csv')
+  csv = CSV.parse(csv_text, :headers => true)
+  csv.each do |row|
+    Exercise.create!(row.to_hash)
+
+  end
+  redirect_to "/exercises"
   end
 end

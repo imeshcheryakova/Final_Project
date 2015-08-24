@@ -58,6 +58,10 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_exercise/:id", :controller => "exercises", :action => "destroy"
+
+  # READ EXERCISES
+  get "/exercisesall", :controller => "exercises", :action => "readexercises"
+
   #------------------------------
 
   # Routes for the Meal resource:
