@@ -1,4 +1,7 @@
 class UsersInputsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def index
     @users_inputs = UsersInput.all
   end
@@ -16,7 +19,7 @@ class UsersInputsController < ApplicationController
     @users_input.exercise_time = params[:exercise_time]
     @users_input.exercise_id = params[:exercise_id]
     @users_input.meal_id = params[:meal_id]
-    @users_input.user_id = params[:user_id]
+    @users_input.user_id = current_user.id
 
     if @users_input.save
       redirect_to "/recommendations/new"

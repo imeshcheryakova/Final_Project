@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150822215051) do
+ActiveRecord::Schema.define(version: 20150824020423) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "weather"
@@ -55,8 +55,6 @@ ActiveRecord::Schema.define(version: 20150822215051) do
     t.string   "city"
     t.string   "unit"
     t.string   "street"
-    t.string   "password"
-    t.string   "username"
     t.integer  "alcohol"
     t.string   "body"
     t.float    "height"
@@ -65,6 +63,9 @@ ActiveRecord::Schema.define(version: 20150822215051) do
     t.string   "first_name"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.decimal  "activity_factor"
+    t.decimal  "target_pounds"
+    t.decimal  "target_days"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

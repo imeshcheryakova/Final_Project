@@ -9,7 +9,7 @@ class UserController < ApplicationController
   end
 
   def create
-  render "new"
+     render "new"
   end
 
   def edit

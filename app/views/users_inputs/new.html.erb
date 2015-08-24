@@ -48,14 +48,6 @@
         <%= select_tag :meal_id, options_from_collection_for_select(Meal.order("meal ASC"), :id, :meal, @users_input.meal_id), :class => "form-control" %>
       </div>
 
-      <!-- Label and input for user_id -->
-      <div class="form-group">
-        <label for="user_id" class="control-label">
-          User
-        </label>
-
-        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @users_input.user_id %>">
-      </div>
 
       <button class="btn btn-success">
         Get Recommendation

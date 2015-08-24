@@ -22,11 +22,6 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :username %>
-      <%= f.text_field :username, :class => "form-control" %>
-    </div>
-
-    <div class="form-group">
       <%= f.label :first_name %>
       <%= f.text_field :first_name, :class => "form-control" %>
     </div>
@@ -53,6 +48,11 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :state %>
+      <%= f.text_field :state, :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
       <%= f.label :zip %>
       <%= f.number_field :zip, :class => "form-control" %>
     </div>
@@ -65,11 +65,8 @@
 
     <div class="form-group">
       <%= f.label :alcohol %>
-      <%= select_tag :alcohol, options_for_select([["once per week",1],["twice per week",2],["three times per week",3],["four times per week",4],["five times per week",5],["six times per week",6],["every day",7]],7), :class => "form-control" %>
-
-
+      <%= f.select :alcohol, options_for_select([["once per week",1],["twice per week",2],["three times per week",3],["four times per week",4],["five times per week",5],["six times per week",6],["every day",7]],7), :class => "form-control" %>
     </div>
-
 
 
     <div class="form-group">
@@ -80,31 +77,44 @@
     <div class="form-group">
       <%= f.label :weight %>
       <%= f.number_field :weight, :class => "form-control", :placeholder => "Pounds"%>
-
     </div>
 
     <div class="form-group">
-
-      <%= f.label :body %>
-
-
+      <%= f.label :target_pounds %>
+      <%= f.number_field :target_pounds, :class => "form-control", :placeholder => "Pounds"%>
     </div>
+
+    <div class="form-group">
+      <%= f.label :target_days %>
+      <%= f.number_field :target_days, :class => "form-control", :placeholder => "days"%>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :activity_factor %>
+      <%= f.select :activity_factor, options_for_select([["noneish",1.0],["some-ish",1.1],["more-ish",1.2]],3), :class => "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :body %>
+    </div>
+
     <div class="btn-group btn-group-justified" role="group" aria-label="...">
       <div class="btn-group" role="group" >
         <%=image_tag("Ectomorth.jpg", alt: "Example Image")%>
-        <button type="button" class="btn btn-default">My body type is ectomorth</button>
-        <input type="checkbox" id="user_body">
+
+        <%= f.radio_button :body, "Ectomorph", :class =>"form-control" %>
+
 
       </div>
       <div class="btn-group" role="group">
         <%=image_tag("Mesomorth.jpg", alt: "Example Image")%>
-        <button type="button" class="btn btn-default">My body type is mesomorth</button>
-        <input type="checkbox" id="user_body">
+        <%= f.radio_button :body, "Mesomorph", :class =>"form-control" %>
+
       </div>
       <div class="btn-group" role="group">
         <%=image_tag("Endomorth.jpg", alt: "Example Image")%>
-        <button type="button" class="btn btn-default">My body type is endomorth</button>
-        <input type="checkbox" id="user_body">
+        <%= f.radio_button :body, "Endomorph", :class =>"form-control" %>
+
       </div>
     </div>
 
