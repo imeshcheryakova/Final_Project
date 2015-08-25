@@ -12,7 +12,6 @@
         <th>Exercise time</th>
         <th>Exercise</th>
         <th>Meal</th>
-        <th>User</th>
         <th>Actions</th>
       </tr>
 
@@ -21,7 +20,7 @@
         <td><%= users_input.exercise_time %></td>
         <td><%= users_input.exercise.exercise %></td>
         <td><%= users_input.meal.meal %></td>
-        <td><%= users_input.user.username %></td>
+
         <td>
           <a href="/users_inputs/<%= users_input.id %>" class="btn btn-primary">Show</a>
           <a href="/users_inputs/<%= users_input.id %>/edit" class="btn btn-warning">Edit</a>

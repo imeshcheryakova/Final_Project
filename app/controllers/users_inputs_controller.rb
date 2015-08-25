@@ -22,7 +22,7 @@ class UsersInputsController < ApplicationController
     @users_input.user_id = current_user.id
 
     if @users_input.save
-      redirect_to "/recommendations/new"
+      redirect_to "/create_recommendation"
     else
       render 'new'
     end

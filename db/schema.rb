@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150824020423) do
+ActiveRecord::Schema.define(version: 20150825013943) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "weather"
@@ -26,11 +26,12 @@ ActiveRecord::Schema.define(version: 20150824020423) do
     t.string   "meal"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "content"
+    t.text     "serving_size"
   end
 
   create_table "recommendations", force: :cascade do |t|
-    t.integer  "recommendation_meal_portions"
-    t.integer  "recommendation_time_exercise"
+    t.integer  "recommended_exercise_time"
     t.integer  "exercise_id"
     t.integer  "meal_id"
     t.integer  "user_id"

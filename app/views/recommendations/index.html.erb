@@ -9,21 +9,21 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>Recommendation meal portions</th>
-        <th>Recommendation time exercise</th>
+
+        <th>Recommendation  exercise time</th>
         <th>Exercise</th>
         <th>Meal</th>
-        <th>User</th>
+
         <th>Actions</th>
       </tr>
 
       <% @recommendations.each do |recommendation| %>
       <tr>
-        <td><%= recommendation.recommendation_meal_portions %></td>
-        <td><%= recommendation.recommendation_time_exercise %></td>
-        <td><%= recommendation.exercise_id %></td>
-        <td><%= recommendation.meal_id %></td>
-        <td><%= recommendation.user_id %></td>
+
+        <td><%= recommendation.recommended_exercise_time %></td>
+        <td><%= recommendation.exercise.exercise %></td>
+        <td><%= recommendation.meal.meal %></td>
+
         <td>
           <a href="/recommendations/<%= recommendation.id %>" class="btn btn-primary">Show</a>
           <a href="/recommendations/<%= recommendation.id %>/edit" class="btn btn-warning">Edit</a>
@@ -34,3 +34,5 @@
     </table>
   </div>
 </div>
+
+

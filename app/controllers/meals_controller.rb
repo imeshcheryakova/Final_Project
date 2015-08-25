@@ -1,3 +1,4 @@
+require 'csv'
 class MealsController < ApplicationController
   def index
     @meals = Meal.all
@@ -47,4 +48,16 @@ class MealsController < ApplicationController
 
     redirect_to "/meals", :notice => "Meal deleted."
   end
+
+  def readmeals
+    Meal.delete_all
+    csv_text = File.read('/Users/irina_m/Desktop/Meals.csv')
+    csv = CSV.parse(csv_text, :headers => true)
+    csv.each do |row|
+      Meal.create!(row.to_hash)
+
+    end
+    redirect_to "/meals"
+  end
+
 end

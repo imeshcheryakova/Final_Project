@@ -91,7 +91,7 @@
 
     <div class="form-group">
       <%= f.label :activity_factor %>
-      <%= f.select :activity_factor, options_for_select([["noneish",1.0],["some-ish",1.1],["more-ish",1.2]],3), :class => "form-control" %>
+      <%= f.select :activity_factor, options_for_select([["sedentary (little or no exercise)",1.2],["lightly active (light exercise/sports 1-3 days/week)",1.375],["moderately active (moderate exercise/sports 3-5 days/week)",1.55],["very active (hard exercise/sports 6-7 days a week)",1.725],["extra active (very hard exercise/sports and physical job)",1.9]],6), :class => "form-control" %>
     </div>
 
     <div class="form-group">

@@ -5,20 +5,14 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Recommendation meal portions</dt>
-      <dd><%= @recommendation.recommendation_meal_portions %></dd>
+      <dt>Recommended exercise</dt>
+      <dd><%= @recommendation.exercise.exercise %></dd>
 
-      <dt>Recommendation time exercise</dt>
-      <dd><%= @recommendation.recommendation_time_exercise %></dd>
+      <dt>Recommended exercise time </dt>
+      <dd><%= @recommendation.recommended_exercise_time %></dd>
 
-      <dt>Exercise</dt>
-      <dd><%= @recommendation.exercise_id %></dd>
-
-      <dt>Meal</dt>
-      <dd><%= @recommendation.meal_id %></dd>
-
-      <dt>User</dt>
-      <dd><%= @recommendation.user_id %></dd>
+      <dt>Recommended Meal</dt>
+      <dd><%= @recommendation.meal.meal %></dd>
 
     </dl>
 
@@ -35,3 +29,4 @@
     </div>
   </div>
 </div>
+

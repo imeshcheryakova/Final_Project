@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   # Routes for the Recommendation resource:
   # CREATE
   get "/recommendations/new", :controller => "recommendations", :action => "new"
-  post "/create_recommendation", :controller => "recommendations", :action => "create"
+  get "/create_recommendation", :controller => "recommendations", :action => "create"
 
   # READ
   get "/recommendations", :controller => "recommendations", :action => "index"
@@ -79,6 +79,9 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_meal/:id", :controller => "meals", :action => "destroy"
+
+  #READ MEALS
+  get "/mealsall", :controller => "meals", :action => "readmeals"
   #------------------------------
 
   # The priority is based upon order of creation: first created -> highest priority.
