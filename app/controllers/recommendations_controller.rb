@@ -83,9 +83,12 @@ class RecommendationsController < ApplicationController
 
 
     #Retrieveing Meals and Exercises for Recommendation
-    @MyExercise = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/2).take!
-    @MyMeal = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat).take!
+    @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/2)
+    @MyMeals = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat)
 
+    #random matching exercise and meal
+    @MyExercise = @MyExercises.sample
+    @MyMeal = @MyMeals.sample
 
     @recommendation.recommended_exercise_time = @MyExercise.calories_per_hour/@CaloriestoExercise*60
     @recommendation.exercise_id=@MyExercise.id
