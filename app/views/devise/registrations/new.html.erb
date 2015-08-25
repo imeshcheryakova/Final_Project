@@ -80,8 +80,8 @@
     </div>
 
     <div class="form-group">
-      <%= f.label :target_pounds %>
-      <%= f.number_field :target_pounds, :class => "form-control", :placeholder => "Pounds"%>
+      <%= f.label :weight_target %>
+      <%= f.select :weight_target, options_for_select([["lose weight",1],["gain weight",2],["no changes",3]],3), :class => "form-control" %>
     </div>
 
     <div class="form-group">

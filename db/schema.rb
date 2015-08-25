@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825013943) do
+ActiveRecord::Schema.define(version: 20150825191630) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "weather"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20150825013943) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.decimal  "activity_factor"
-    t.decimal  "target_pounds"
+    t.decimal  "weight_target"
     t.decimal  "target_days"
   end
 

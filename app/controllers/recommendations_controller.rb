@@ -15,15 +15,16 @@ class RecommendationsController < ApplicationController
     @recommendation = Recommendation.new
 
 
+=begin
     #Calculate user input
     @MaxId= UsersInput.where(user_id: current_user.id).maximum(:id)
     @UserInput = UsersInput.find(@MaxId)
 
-    @UserInputCalculated=@UserInput.exercise.calories_per_hour*(-1)* @UserInput.exercise_time/60
+    @UserInputCalculated=@UserInput.exercise.calories_per_hour*(-1)* @UserInput.exercise_time/60+@UserInput.meal.calories_per_portion
 
       #Calculate Daily Calories Intake
 
-    @DailyIntake = current_user.weight*11*current_user.activity_factor+100*current_user.alcohol/7+@UserInput.meal.calories_per_portion
+    @DailyIntake = current_user.weight*11*current_user.activity_factor+100*current_user.alcohol/7
 
     #Calculate Target Weight Loss/Gain
 
@@ -80,7 +81,77 @@ class RecommendationsController < ApplicationController
       @CaloriestoExercise=250.0
       @CaloriestoEat=250.0
     end
+=end
 
+
+    #CORRECTED
+
+    #Calculate user input
+    @MaxId= UsersInput.where(user_id: current_user.id).maximum(:id)
+    @UserInput = UsersInput.find(@MaxId)
+
+    @UserInputCalculated=@UserInput.exercise.calories_per_hour*(-1)* @UserInput.exercise_time/60+@UserInput.meal.calories_per_portion
+
+    #Calculate Base Daily Calories Intake for this User (before gain/loss weight target)
+
+    @DailyIntake = current_user.weight*11*current_user.activity_factor+100*current_user.alcohol/7
+
+    #Calculate Target Weight Loss/Gain
+
+    #@TargetLossGain = current_user.target_pounds*3500/current_user.target_days
+
+    #Calculate Daily Target Calories (1-lose weight, 2-gain weight, 3- no change)
+
+    @TargetCalories=@DailyIntake
+    if current_user.weight_target==1
+      @TargetCalories=@DailyIntake-300
+      end
+    if current_user.weight_target==2
+      @TargetCalories=@DailyIntake+300
+    end
+    if current_user.weight_target==3
+      @TargetCalories=@DailyIntake+0
+    end
+
+    #Target Daily Calories Adjusted by Body Type
+
+    if current_user.body=="Ectomorth"
+      @TargetCalories=@TargetCalories*0.8
+    end
+
+   if current_user.body=="Mesomorth"
+    @TargetCalories=@TargetCalories*1.0
+   end
+
+    if current_user.body=="Endomorth"
+    @TargetCalories=@TargetCalories*1.2
+    end
+
+
+    #Calories Needed
+      @CaloriesNeeded=@TargetCalories-@UserInputCalculated
+
+    #Calculating Final Calories Value for Recommendation
+
+    if @CaloriesNeeded>0 or @CaloriesNeeded>@TargetCalories
+      @CaloriestoExercise=@CaloriesNeeded-@TargetCalories+300.0
+      @CaloriestoEat=300.0
+    end
+
+    if @CaloriesNeeded>0 or @CaloriesNeeded<@TargetCalories
+      @CaloriestoExercise=300.0
+      @CaloriestoEat=@TargetCalories-@CaloriesNeeded+300.0
+    end
+
+    if @CaloriesNeeded<0
+      @CaloriestoExercise=300.0
+      @CaloriestoEat=@TargetCalories+@CaloriesNeeded*(-1)+300.0
+    end
+
+    if @CaloriesNeeded==0
+      @CaloriestoExercise=300.0
+      @CaloriestoEat=300.0
+    end
 
     #Retrieveing Meals and Exercises for Recommendation
     @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/2)
