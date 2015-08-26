@@ -3,11 +3,12 @@ class UsersInputsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users_inputs = UsersInput.all
+    @users_inputs = UsersInput.where(user_id: current_user.id)
+
   end
 
   def show
-    @users_input = UsersInput.find(params[:id])
+    @users_input = UsersInput.where(user_id: current_user.id, id: params[:id]).take!
   end
 
   def new

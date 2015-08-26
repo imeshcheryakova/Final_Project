@@ -21,10 +21,14 @@
       <!-- Label and input for weather -->
       <div class="form-group">
         <label for="weather" class="control-label">
-          Weather
+          Type of Activity
         </label>
 
-        <input type="text" id="weather" name="weather" placeholder="Weather" class="form-control" value="<%= @exercise.weather %>">
+        <select :class => "form-control">
+          <option value="indoor">Indoor</option>
+          <option value="outdoor">Outdoor</option>
+          </select>
+
       </div>
 
       <!-- Label and input for calories_per_hour -->
@@ -39,10 +43,10 @@
       <!-- Label and input for type -->
       <div class="form-group">
         <label for="type" class="control-label">
-          Type
+          Exercise
         </label>
 
-        <input type="text" id="type" name="type" placeholder="Type" class="form-control" value="<%= @exercise.type %>">
+        <input type="text" id="type" name="type" placeholder="Type" class="form-control" value="<%= @exercise.exercise %>">
       </div>
 
       <button class="btn btn-success">

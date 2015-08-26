@@ -24,16 +24,37 @@
           Calories per portion
         </label>
 
-        <input type="text" id="calories_per_portion" name="calories_per_portion" placeholder="Calories per portion" class="form-control" value="<%= @meal.calories_per_portion %>">
+        <input type="text" id="calories_per_portion" name="calories_per_portion" placeholder="Enter number if calories" class="form-control" value="<%= @meal.calories_per_portion %>">
       </div>
+
+
+      <!-- Label and input for serving_size -->
+      <div class="form-group">
+        <label for="serving_size" class="control-label">
+          Servizing size
+        </label>
+
+        <input type="serving_size" id="serving_size" name="serving_size" placeholder="Serving size, e.g. spoon, portion" class="form-control" value="<%= @meal.calories_per_portion %>">
+      </div>
+
+      <!-- Label and input for content -->
+      <div class="form-group">
+        <label for="content" class="control-label">
+          Nutrition type
+        </label>
+
+        <select :class => "form-control">
+          <option value="protein">Protein</option>
+          <option value="carbohydrt">Carbohydrates</option>
+        </select>
 
       <!-- Label and input for type -->
       <div class="form-group">
         <label for="type" class="control-label">
-          Type
+          Name
         </label>
 
-        <input type="text" id="meal" name="meal" placeholder="Meal" class="form-control" value="<%= @meal.meal %>">
+        <input type="text" id="meal" name="meal" placeholder="Name of the meal" class="form-control" value="<%= @meal.meal %>">
       </div>
 
       <button class="btn btn-warning">

@@ -1,5 +1,6 @@
 require 'csv'
 class MealsController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:index, :show]
   def index
     @meals = Meal.all
   end
@@ -15,7 +16,7 @@ class MealsController < ApplicationController
   def create
     @meal = Meal.new
     @meal.calories_per_portion = params[:calories_per_portion]
-    @meal.type = params[:type]
+    @meal.meal = params[:meal]
 
     if @meal.save
       redirect_to "/meals", :notice => "Meal created successfully."
@@ -32,7 +33,7 @@ class MealsController < ApplicationController
     @meal = Meal.find(params[:id])
 
     @meal.calories_per_portion = params[:calories_per_portion]
-    @meal.type = params[:type]
+    @meal.meal = params[:meal]
 
     if @meal.save
       redirect_to "/meals", :notice => "Meal updated successfully."

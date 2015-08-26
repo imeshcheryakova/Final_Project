@@ -1,7 +1,7 @@
 
 require 'csv'
 class ExercisesController < ApplicationController
-
+  skip_before_action :authenticate_user!, :only => [:index, :show]
 
   def index
     @exercises = Exercise.all
@@ -19,7 +19,7 @@ class ExercisesController < ApplicationController
     @exercise = Exercise.new
     @exercise.weather = params[:weather]
     @exercise.calories_per_hour = params[:calories_per_hour]
-    @exercise.type = params[:type]
+    @exercise.exercise = params[:exercise]
 
     if @exercise.save
       redirect_to "/exercises", :notice => "Exercise created successfully."
@@ -38,7 +38,7 @@ class ExercisesController < ApplicationController
 
     @exercise.weather = params[:weather]
     @exercise.calories_per_hour = params[:calories_per_hour]
-    @exercise.type = params[:type]
+    @exercise.exercise = params[:exercise]
 
     if @exercise.save
       redirect_to "/exercises", :notice => "Exercise updated successfully."

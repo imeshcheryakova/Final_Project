@@ -1,7 +1,6 @@
 <div class="page-header">
   <h1>
     Recommendations
-    <a href="/recommendations/new" class="btn btn-lg btn-success">New Recommendation</a>
   </h1>
 </div>
 
@@ -22,7 +21,7 @@
 
         <td><%= recommendation.recommended_exercise_time %></td>
         <td><%= recommendation.exercise.exercise %></td>
-        <td><%= recommendation.meal.meal %></td>
+        <td><%= truncate(recommendation.meal.meal) %></td>
 
         <td>
           <a href="/recommendations/<%= recommendation.id %>" class="btn btn-primary">Show</a>
@@ -34,5 +33,7 @@
     </table>
   </div>
 </div>
+
+
 
 
