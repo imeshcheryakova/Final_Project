@@ -24,4 +24,6 @@ class User < ActiveRecord::Base
 
   has_many :recommendations
   has_many :users_inputs
+  has_many :favorites
+  has_many :exercises, :through => :favorites
 end

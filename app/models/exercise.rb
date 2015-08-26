@@ -7,4 +7,7 @@ class Exercise < ActiveRecord::Base
   has_many :recommendations
   has_many :users_inputs
 
+  has_many :users, :through => :favorites
+  has_many :favorites
+
 end

@@ -11,12 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825191630) do
+ActiveRecord::Schema.define(version: 20150826023547) do
 
   create_table "exercises", force: :cascade do |t|
     t.string   "weather"
     t.integer  "calories_per_hour"
     t.string   "exercise"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "exercise_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

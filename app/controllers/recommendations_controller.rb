@@ -1,6 +1,6 @@
 class RecommendationsController < ApplicationController
   def index
-    @recommendations = Recommendation.where(user_id: current_user.id)
+    @recommendations = current_user.recommendations
   end
 
   def show

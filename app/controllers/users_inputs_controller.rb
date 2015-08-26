@@ -3,7 +3,7 @@ class UsersInputsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users_inputs = UsersInput.where(user_id: current_user.id)
+    @users_inputs = current_user.users_inputs
 
   end
 
