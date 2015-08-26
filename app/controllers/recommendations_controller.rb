@@ -133,12 +133,12 @@ class RecommendationsController < ApplicationController
 
     #Calculating Final Calories Value for Recommendation
 
-    if @CaloriesNeeded>0 or @CaloriesNeeded>@TargetCalories
+    if @CaloriesNeeded>0 and @CaloriesNeeded>@TargetCalories
       @CaloriestoExercise=@CaloriesNeeded-@TargetCalories+300.0
       @CaloriestoEat=300.0
     end
 
-    if @CaloriesNeeded>0 or @CaloriesNeeded<@TargetCalories
+    if @CaloriesNeeded>0 and @CaloriesNeeded<@TargetCalories
       @CaloriestoExercise=300.0
       @CaloriestoEat=@TargetCalories-@CaloriesNeeded+300.0
     end
@@ -154,9 +154,16 @@ class RecommendationsController < ApplicationController
     end
 
     #Retrieveing Meals and Exercises for Recommendation
-    @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/2)
+    @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/4)
     @MyMeals = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat)
 
+    if( not @MyMeals.present? )
+      raise "No matching meal: need between #{@CaloriestoEat/10} and #{@CaloriestoEat}"
+    end
+    if( not @MyExercises.present? )
+
+      raise "No matching exercise: need between #{@CaloriestoExercise/2} and #{@CaloriestoExercise}"
+    end
     #random matching exercise and meal
     @MyExercise = @MyExercises.sample
     @MyMeal = @MyMeals.sample
