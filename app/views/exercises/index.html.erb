@@ -17,19 +17,17 @@
 
       </tr>
 
-
-
-
-
       <% @exercises.each do |exercise| %>
       <tr>
 
         <td>
+          <% if user_signed_in? %>
           <% if current_user.exercises.include?(exercise) %>
               <% favorite = current_user.favorites.find_by(:exercise_id => exercise.id) %>
               <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
                 <i class="fa fa-trash"></i>
               </a>
+
           <% else %>
               <form action="/create_favorite" method="post">
                 <!-- Hidden input for authenticity token to protect from forgery -->
@@ -46,7 +44,9 @@
                 </button>
               </form>
           <% end %>
+          <% end %>
         </td>
+
 
         <td><%= exercise.weather %></td>
         <td><%= exercise.calories_per_hour %></td>
