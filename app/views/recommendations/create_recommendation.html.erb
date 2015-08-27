@@ -1,0 +1,56 @@
+<div class="page-header">
+  <h2>Today's Recommendation</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <table class="table table-striped table-hover">
+
+    <tr>
+        <td> Today's exercise and meal </td>
+        <td><%=@UserInputCalculated.round %> cal </td>
+    </tr>
+      <tr>
+        <td> To burn today </td>
+        <td> <%=@CaloriestoExercise.round %> cal </td>
+      </tr>
+    <tr>
+    <td> To gain today </td>
+    <td><%=@CaloriestoEat.round %> cal </td>
+      </tr>
+
+
+</table>
+
+
+    <div class="jumbotron">
+      <div class="container">
+        <table>
+
+        <tr>
+
+        <td><h3>Your recommended exercise for today is <b><%= @recommendation.exercise.exercise %></b>
+          for <b><%= @recommendation.recommended_exercise_time %> minutes </b> </h3></td>
+
+        </tr>
+            </table>
+</div>
+      </div>
+
+    <div class="jumbotron">
+      <div class="container">
+        <table>
+        <td><h3>Your recommended meal for today is <b><%= @recommendation.meal.meal %></b></h3></td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+
+    <div>
+      <a href="/recommendations" class="btn btn-success" >
+        Back
+      </a>
+    </div>
+  </div>
+

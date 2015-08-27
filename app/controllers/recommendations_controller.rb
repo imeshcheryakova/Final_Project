@@ -1,6 +1,6 @@
 class RecommendationsController < ApplicationController
   def index
-    @recommendations = current_user.recommendations
+    @recommendations = current_user.recommendations.order(created_at: :desc)
   end
 
   def show
@@ -99,11 +99,10 @@ class RecommendationsController < ApplicationController
     @recommendation.meal_id=@MyMeal.id
     @recommendation.user_id=current_user.id
 
-    if @recommendation.save
-      redirect_to "/recommendations", :notice => "Recommendation created successfully."
-    else
-      render 'recommendation_debug'
-    end
+    @recommendation.save
+
+      render 'create_recommendation'
+
 
 
   end
