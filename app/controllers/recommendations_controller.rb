@@ -80,7 +80,14 @@ class RecommendationsController < ApplicationController
     end
 
     #Retrieveing Meals and Exercises for Recommendation
-    @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/4)
+
+    if current_user.favorites.count != 0
+      @MyExercises=current_user.exercises
+    else
+      @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/4)
+
+    end
+
     @MyMeals = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat)
 
     if( not @MyMeals.present? )

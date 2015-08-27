@@ -53,49 +53,139 @@
                     We need your current password to confirm your changes.
                   </p>
                 </div>
+                </div>
 
-                <div class="form-group">
-                  <%= f.label :unit, class: "col-sm-2 control-label" %>
-                  <div class="col-sm-10">
-                    <%= f.number_field :unit, autocomplete: "off", class: "form-control" %>
-                  </div>
 
-                  <div class="form-group">
-                    <%= f.label :street, class: "col-sm-2 control-label" %>
-                    <div class="col-sm-10">
-                      <%= f.text_field :street, autocomplete: "off", class: "form-control" %>
-                    </div>
-
-                    <div class="form-group">
-                      <%= f.label :city, class: "col-sm-2 control-label" %>
-                      <div class="col-sm-10">
-                        <%= f.text_field :city, autocomplete: "off", class: "form-control" %>
-                      </div>
-
-                      <div class="form-group">
-                        <%= f.label :zip, class: "col-sm-2 control-label" %>
-                        <div class="col-sm-10">
-                          <%= f.number_field :zip, autocomplete: "off", class: "form-control" %>
-                        </div>
-
-                        <div class="form-group">
-                          <%= f.label :height, class: "col-sm-2 control-label" %>
-                          <div class="col-sm-10">
-                            <%= f.number_field :height, autocomplete: "off", class: "form-control" %>
-                          </div>
-
-                          <div class="form-group">
-                            <%= f.label :weight, class: "col-sm-2 control-label" %>
-                            <div class="col-sm-10">
-                              <%= f.number_field :weight, autocomplete: "off", class: "form-control" %>
-                            </div>
-
-                        <div class="form-group">
-                          <%= f.label :photo, class: "col-sm-2 control-label" %>
-                          <div class="col-sm-10">
-                            <%= f.text_field :photo, autocomplete: "off", class: "form-control" %>
-                          </div>
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :first_name %>
+                <%= f.text_field :first_name, :class => "form-control" %>
               </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :last_name %>
+                <%= f.text_field :last_name, :class => "form-control" %>
+              </div>
+                </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :unit %>
+                <%= f.number_field :unit, :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :street %>
+                <%= f.text_field :street, :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :city %>
+                <%= f.text_field :city, :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :state %>
+                <%= f.text_field :state, :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :zip %>
+                <%= f.number_field :zip, :class => "form-control" %>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :photo %>
+                <%= f.text_field :photo, :class => "form-control" %>
+              </div>
+                </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :alcohol %>
+                <%= f.select :alcohol, options_for_select([["once per week",1],["twice per week",2],["three times per week",3],["four times per week",4],["five times per week",5],["six times per week",6],["every day",7]],7), :class => "form-control" %>
+              </div>
+                </div>
+
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :height %>
+                <%= f.number_field :height, :class => "form-control", :placeholder => "Inches" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :weight %>
+                <%= f.number_field :weight, :class => "form-control", :placeholder => "Pounds"%>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :weight_target %>
+                <%= f.select :weight_target, options_for_select([["lose weight",1],["gain weight",2],["no changes",3]],3), :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :target_days %>
+                <%= f.number_field :target_days, :class => "form-control", :placeholder => "days"%>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :activity_factor %>
+                <%= f.select :activity_factor, options_for_select([["sedentary (little or no exercise)",1.2],["lightly active (light exercise/sports 1-3 days/week)",1.375],["moderately active (moderate exercise/sports 3-5 days/week)",1.55],["very active (hard exercise/sports 6-7 days a week)",1.725],["extra active (very hard exercise/sports and physical job)",1.9]],6), :class => "form-control" %>
+              </div>
+                </div>
+
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2">
+                <%= f.label :body %>
+              </div>
+                </div>
+
+              <div class="btn-group btn-group-justified" role="group" aria-label="...">
+                <div class="btn-group" role="group" >
+                  <%=image_tag("Ectomorth.jpg", alt: "Example Image")%>
+
+                  <%= f.radio_button :body, "Ectomorth", :class =>"form-control" %>
+
+
+                </div>
+
+                <div class="btn-group" role="group">
+                  <%=image_tag("Mesomorth.jpg", alt: "Example Image")%>
+                  <%= f.radio_button :body, "Mesomorth", :class =>"form-control" %>
+
+                </div>
+
+                <div class="btn-group" role="group">
+                  <%=image_tag("Endomorth.jpg", alt: "Example Image")%>
+                  <%= f.radio_button :body, "Endomorth", :class =>"form-control" %>
+
+                </div>
+              </div>
+
+
 
               <div class="form-group">
                 <div class="col-sm-10 col-sm-offset-2">

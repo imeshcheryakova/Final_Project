@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   validates :activity_factor, :presence => true, numericality: { greater_than: 0, less_than: 2}
   validates :target_days, :presence => true, numericality: { greater_than: 0, less_than: 365 }
-  validates :target_pounds, :presence => true, numericality: { greater_than: -50, less_than: 50 }
+  validates :weight_target, :presence => true, numericality: { greater_than: -50, less_than: 50 }
 
   has_many :recommendations
   has_many :users_inputs

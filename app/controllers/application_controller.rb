@@ -20,14 +20,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :city
     devise_parameter_sanitizer.for(:sign_up) << :unit
     devise_parameter_sanitizer.for(:sign_up) << :street
-    devise_parameter_sanitizer.for(:sign_up) << :username
     devise_parameter_sanitizer.for(:sign_up) << :alcohol
     devise_parameter_sanitizer.for(:sign_up) << :body
     devise_parameter_sanitizer.for(:sign_up) << :height
     devise_parameter_sanitizer.for(:sign_up) << :weight
     devise_parameter_sanitizer.for(:sign_up) << :activity_factor
     devise_parameter_sanitizer.for(:sign_up) << :target_days
-    devise_parameter_sanitizer.for(:sign_up) << :target_pounds
+    devise_parameter_sanitizer.for(:sign_up) << :weight_target
 
     devise_parameter_sanitizer.for(:account_update) << :first_name
     devise_parameter_sanitizer.for(:account_update) << :last_name
@@ -37,13 +36,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) << :city
     devise_parameter_sanitizer.for(:account_update) << :unit
     devise_parameter_sanitizer.for(:account_update) << :street
-    devise_parameter_sanitizer.for(:account_update) << :username
     devise_parameter_sanitizer.for(:account_update) << :alcohol
     devise_parameter_sanitizer.for(:account_update) << :body
     devise_parameter_sanitizer.for(:account_update) << :height
     devise_parameter_sanitizer.for(:account_update) << :weight
     devise_parameter_sanitizer.for(:account_update) << :activity_factor
     devise_parameter_sanitizer.for(:account_update) << :target_days
-    devise_parameter_sanitizer.for(:account_update) << :target_pounds
+    devise_parameter_sanitizer.for(:account_update) << :weight_target
   end
 end
