@@ -55,4 +55,10 @@ class UsersInputsController < ApplicationController
 
     redirect_to "/users_inputs", :notice => "Users input deleted."
   end
+
+  def destroyall
+    UsersInput.delete_all
+
+    redirect_to "/users_inputs", :notice => "Users input deleted."
+  end
 end

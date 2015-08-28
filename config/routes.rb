@@ -41,6 +41,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_users_input/:id", :controller => "users_inputs", :action => "destroy"
+  get "/delete_users_input_all", :controller => "users_inputs", :action => "destroyall"
   #------------------------------
 
   # Routes for the Recommendation resource:
@@ -58,6 +59,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_recommendation/:id", :controller => "recommendations", :action => "destroy"
+  get "/delete_recommendation_all", :controller => "recommendations", :action => "destroyall"
   #------------------------------
 
   # Routes for the Exercise resource:

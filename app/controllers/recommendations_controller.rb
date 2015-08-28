@@ -141,4 +141,10 @@ class RecommendationsController < ApplicationController
 
     redirect_to "/recommendations", :notice => "Recommendation deleted."
   end
+
+  def destroyall
+    Recommendation.delete_all
+
+    redirect_to "/recommendations", :notice => "Recommendation deleted."
+  end
 end
