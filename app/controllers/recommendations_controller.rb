@@ -90,10 +90,10 @@ class RecommendationsController < ApplicationController
 
     @MyMeals = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat)
 
-    if( not @MyMeals.present? )
+    if not @MyMeals.present?
       raise "No matching meal: need between #{@CaloriestoEat/10} and #{@CaloriestoEat}"
     end
-    if( not @MyExercises.present? )
+    if not @MyExercises.present?
 
       raise "No matching exercise: need between #{@CaloriestoExercise/2} and #{@CaloriestoExercise}"
     end
@@ -121,11 +121,11 @@ class RecommendationsController < ApplicationController
   def update
     @recommendation = Recommendation.find(params[:id])
 
-    @recommendation.recommendation_meal_portions = params[:recommendation_meal_portions]
-    @recommendation.recommendation_time_exercise = params[:recommendation_time_exercise]
+
+    @recommendation.recommended_exercise_time = params[:recommended_exercise_time]
     @recommendation.exercise_id = params[:exercise_id]
     @recommendation.meal_id = params[:meal_id]
-    @recommendation.user_id = params[:user_id]
+    @recommendation.user_id = current_user.id
 
     if @recommendation.save
       redirect_to "/recommendations", :notice => "Recommendation updated successfully."

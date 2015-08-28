@@ -14,6 +14,7 @@
 
 <div class="row">
   <div class="col-md-12">
+
     <form action="/update_meal/<%= @meal.id %>" method="post">
       <!-- Hidden input for authenticity token to protect from forgery -->
       <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
@@ -43,10 +44,12 @@
           Nutrition type
         </label>
 
-        <select :class => "form-control">
+        <select id="content" name="content" class = "form-control">
           <option value="protein">Protein</option>
           <option value="carbohydrt">Carbohydrates</option>
         </select>
+      </div>
+
 
       <!-- Label and input for type -->
       <div class="form-group">

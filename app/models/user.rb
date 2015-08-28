@@ -13,14 +13,14 @@ class User < ActiveRecord::Base
 
   validates :alcohol, :presence => true, numericality: { only_integer: true }
   validates :body, :presence => true
-  validates :height, :presence => true, numericality: { only_integer: true }
+  validates :height, :presence => true, numericality: { greater_than: 0, less_than: 144 }
   validates :weight, :presence => true, numericality: { greater_than: 80, less_than: 500 }
   validates :first_name, :presence => true
   validates :last_name, :presence => true
 
   validates :activity_factor, :presence => true, numericality: { greater_than: 0, less_than: 2}
-  validates :target_days, :presence => true, numericality: { greater_than: 0, less_than: 365 }
-  validates :weight_target, :presence => true, numericality: { greater_than: -50, less_than: 50 }
+  validates :target_days, :presence => true, numericality:     { greater_than: 0, less_than: 365 }
+  validates :weight_target, :presence => true, numericality:   { greater_than: -50, less_than: 50 }
 
   has_many :recommendations
   has_many :users_inputs

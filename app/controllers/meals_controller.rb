@@ -15,8 +15,12 @@ class MealsController < ApplicationController
 
   def create
     @meal = Meal.new
+
+    @meal.content = params[:content]
+    @meal.serving_size = params[:serving_size]
     @meal.calories_per_portion = params[:calories_per_portion]
     @meal.meal = params[:meal]
+
 
     if @meal.save
       redirect_to "/meals", :notice => "Meal created successfully."
@@ -32,6 +36,8 @@ class MealsController < ApplicationController
   def update
     @meal = Meal.find(params[:id])
 
+    @meal.content = params[:content]
+    @meal.serving_size = params[:serving_size]
     @meal.calories_per_portion = params[:calories_per_portion]
     @meal.meal = params[:meal]
 

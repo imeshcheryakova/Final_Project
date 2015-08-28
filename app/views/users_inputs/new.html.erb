@@ -33,7 +33,6 @@
           Exercise
         </label>
 
-        <!-- <input type="text" id="exercise_id" name="exercise_id" placeholder="Exercise" class="form-control" value="<%= @users_input.exercise_id %>"> -->
         <%= select_tag :exercise_id, options_from_collection_for_select(Exercise.order("exercise ASC"), :id, :exercise, @users_input.exercise_id), :class => "form-control" %>
       </div>
 
@@ -44,7 +43,7 @@
           Meal
         </label>
 
-        <!-- <input type="text" id="meal_id" name="meal_id" placeholder="Meal" class="form-control" value="<%= @users_input.meal_id %>"> -->
+
         <%= select_tag :meal_id, options_from_collection_for_select(Meal.order("meal ASC"), :id, :meal, @users_input.meal_id), :class => "form-control" %>
       </div>
 
