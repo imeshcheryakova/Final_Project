@@ -57,7 +57,7 @@ class ExercisesController < ApplicationController
 
 def readexercises
   Exercise.delete_all
-  csv_text = File.read('/Users/irina_m/Desktop/exercises.csv')
+  csv_text = File.read("#{Rails.root}/app/assets/exercises.csv")
   csv = CSV.parse(csv_text, :headers => true)
   csv.each do |row|
     Exercise.create!(row.to_hash)

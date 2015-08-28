@@ -58,7 +58,7 @@ class MealsController < ApplicationController
 
   def readmeals
     Meal.delete_all
-    csv_text = File.read('/Users/irina_m/Desktop/Meals.csv')
+    csv_text = File.read("#{Rails.root}/app/assets/Meals.csv")
     csv = CSV.parse(csv_text, :headers => true)
     csv.each do |row|
       Meal.create!(row.to_hash)
