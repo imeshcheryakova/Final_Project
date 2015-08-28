@@ -29,7 +29,7 @@
 
         <tr>
 
-        <td><h3>Your recommended exercise for today is <b><%= @recommendation.exercise.exercise %></b>
+        <td><h3>Your exercise for today is <b><%= @recommendation.exercise.exercise %></b>
           for <b><%= @recommendation.recommended_exercise_time %> minutes </b> </h3></td>
 
         </tr>
@@ -40,8 +40,15 @@
     <div class="jumbotron">
       <div class="container">
         <table>
-        <td><h3>Your recommended meal for today is <b><%= @recommendation.meal.meal %></b></h3></td>
+          <tr>
+        <td><h3>Your meal for today is <b><%= @recommendation.meal.meal %></b></h3></td>
         </tr>
+          <tr>
+            <td>
+          <a class="btn btn-warning" href="https://www.instacart.com/"> <img src="http://www.readingterminalmarket.org/images/Instacart.png" height="30">
+          </a>
+        </td>
+          </tr>
         </table>
       </div>
     </div>
