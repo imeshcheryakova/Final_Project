@@ -8,7 +8,11 @@
 
     <tr>
         <td> Today's exercise and meal </td>
-        <td><%=@UserInputCalculated.round %> cal </td>
+      <%if @UserInputCalculated >=0%>
+          <td>lost <%=@UserInputCalculated.round %> cal </td>
+      <%else%>
+          <td>gained <%=@UserInputCalculated.round*(-1) %> cal </td>
+      <%end%>
     </tr>
       <tr>
         <td> To burn today </td>
