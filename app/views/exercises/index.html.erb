@@ -10,7 +10,7 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th></th>
+        <th>Favorites</th>
         <th>Weather</th>
         <th>Calories per hour</th>
         <th>Name</th>
@@ -19,46 +19,45 @@
       </tr>
 
       <% @exercises.each do |exercise| %>
-      <tr>
+          <tr>
 
-        <td>
-          <% if user_signed_in? %>
-          <% if current_user.exercises.include?(exercise) %>
-              <% favorite = current_user.favorites.find_by(:exercise_id => exercise.id) %>
-              <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
-                <i class="fa fa-trash"></i>
-              </a>
+            <td>
+              <% if user_signed_in? %>
+                  <% if current_user.exercises.include?(exercise) %>
+                      <% favorite = current_user.favorites.find_by(:exercise_id => exercise.id) %>
+                        <a href="/delete_favorite/<%= favorite.id %>" class="btn btn-danger" rel="nofollow">
+                            <i class="fa fa-trash"></i>
+                        </a>
 
-          <% else %>
-              <form action="/create_favorite" method="post">
-                <!-- Hidden input for authenticity token to protect from forgery -->
-                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+                  <% else %>
+                      <form action="/create_favorite" method="post">
+                        <!-- Hidden input for authenticity token to protect from forgery -->
+                        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-                <!-- Label and input for user_id -->
-                <input name="user_id" type="hidden" value="<%= current_user.id %>">
+                        <!-- Label and input for user_id -->
+                        <input name="user_id" type="hidden" value="<%= current_user.id %>">
 
-                <!-- Label and input for movie_id -->
-                <input name="exercise_id" type="hidden" value="<%= exercise.id %>">
+                        <!-- Label and input for movie_id -->
+                        <input name="exercise_id" type="hidden" value="<%= exercise.id %>">
 
-                <button class="btn btn-success">
-                  <i class="fa fa-star"></i>
-                </button>
-              </form>
-          <% end %>
-          <% end %>
-        </td>
+                        <button class="btn btn-success">
+                          <i class="fa fa-star"></i>
+                        </button>
+                      </form>
+                <% end %>
+              <% end %>
+            </td>
 
-
-        <td><%= exercise.weather %></td>
-        <td><%= exercise.calories_per_hour %></td>
-        <td><%= exercise.exercise %></td>
-        <td>
-          <a href="/exercises/<%= exercise.id %>" class="btn btn-primary">Show</a>
-          <a href="/exercises/<%= exercise.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_exercise/<%= exercise.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
-        </td>
-      </tr>
+            <td><%= exercise.weather %></td>
+            <td><%= exercise.calories_per_hour %></td>
+            <td><%= exercise.exercise %></td>
+            <td>
+              <a href="/exercises/<%= exercise.id %>" class="btn btn-primary">Show</a>
+              <a href="/exercises/<%= exercise.id %>/edit" class="btn btn-warning">Edit</a>
+              <a href="/delete_exercise/<%= exercise.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+            </td>
+          </tr>
       <% end %>
-    </table>
-  </div>
+  </table>
+ </div>
 </div>

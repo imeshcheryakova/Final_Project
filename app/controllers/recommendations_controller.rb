@@ -87,8 +87,11 @@ class RecommendationsController < ApplicationController
       @MyExercises = Exercise.where("calories_per_hour<? AND calories_per_hour>?", @CaloriestoExercise, @CaloriestoExercise/4)
 
     end
-
     @MyMeals = Meal.where("calories_per_portion>? AND calories_per_portion<?", @CaloriestoEat/10, @CaloriestoEat)
+
+    #Recommendation for Protein Diet only
+    @MyProteinMeals = Meal.where("calories_per_portion>? AND calories_per_portion<? AND content=?", @CaloriestoEat/10, @CaloriestoEat,"protein")
+
 
     if not @MyMeals.present?
       raise "No matching meal: need between #{@CaloriestoEat/10} and #{@CaloriestoEat}"
@@ -100,12 +103,14 @@ class RecommendationsController < ApplicationController
     #random matching exercise and meal
     @MyExercise = @MyExercises.sample
     @MyMeal = @MyMeals.sample
+    @MyProteinMeal=@MyMeals.sample
+
 
     @recommendation.recommended_exercise_time = @MyExercise.calories_per_hour/@CaloriestoExercise*60
     @recommendation.exercise_id=@MyExercise.id
     @recommendation.meal_id=@MyMeal.id
     @recommendation.user_id=current_user.id
-    #@recommendation.exercise= params[:exercise]
+
 
     @recommendation.save
 

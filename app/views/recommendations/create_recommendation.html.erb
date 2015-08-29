@@ -43,7 +43,11 @@
       <div class="container">
         <table>
           <tr>
-        <td><h3>Your meal for today is <b><%= @recommendation.meal.meal %></b></h3></td>
+        <td><h3>Your meal for today is <b><%= @recommendation.meal.meal %></b></h3>
+        <h4>If you are on a <mark>protein</mark> diet your meal for today is <b><%=@MyProteinMeal.meal %></b></h4>
+
+        </td>
+
         </tr>
           <tr>
             <td>
@@ -54,7 +58,6 @@
         </table>
       </div>
     </div>
-
 
     <div>
       <a href="/recommendations" class="btn btn-success" >
