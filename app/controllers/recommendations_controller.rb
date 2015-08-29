@@ -105,6 +105,7 @@ class RecommendationsController < ApplicationController
     @recommendation.exercise_id=@MyExercise.id
     @recommendation.meal_id=@MyMeal.id
     @recommendation.user_id=current_user.id
+    #@recommendation.exercise= params[:exercise]
 
     @recommendation.save
 
@@ -126,8 +127,9 @@ class RecommendationsController < ApplicationController
     @recommendation.exercise_id = params[:exercise_id]
     @recommendation.meal_id = params[:meal_id]
     @recommendation.user_id = current_user.id
+    @recommendation.exercise= params[:exercise]
 
-    if @recommendation.save
+        if @recommendation.save
       redirect_to "/recommendations", :notice => "Recommendation updated successfully."
     else
       render 'edit'
